@@ -12,7 +12,14 @@ import java.util.List;
 public interface DiscussPostMapper {
     // offset:每行起始行号，limit每页限制
     List<DiscussPost> selectDiscussPosts(int userId, int offset, int limit);
-    //@Parm 用于给参数取别名
-    //动态条件 且 有且只有一个条件才实现
+
+    // @Param注解用于给参数取别名，
+    // 如果只有一个参数，并且在<if>里使用，则必须加别名.
     int selectDiscussPostRows(@Param("userId") int userId);
+
+    int insertDiscussPost(DiscussPost discussPost);
+
+    DiscussPost selectDiscussPostById(int id);
+
+    int updateCommentCount(int id, int commentCount);
 }
